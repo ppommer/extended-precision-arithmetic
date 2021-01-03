@@ -1,65 +1,8 @@
-%ifndef era
-%include "io.inc"
-%endif
-
 section .data
 global fix_mul_asm
 extern fix_add_asm
 
-%ifndef era
-global main
-%endif
-
 section .text
-
-;You can add stuff to main as well
-%ifndef era
-main:
-    mov ebp, esp; for correct debugging
-    ;calculate 13 * 2.5
-    ;push 2.5
-    ;;;push 0
-    ;;;push 167772160
-    ;push 13
-    ;;;push 0
-    ;;;push 872415232
-    ;;;call fix_mul_asm
-    ;;;add esp, 16
-    ;value in edx:eax
-    ;...do other stuff
-    
-    ;calculate 64.75 * 130.5 = 8449.875
-    ;push 130.5
-    push dword 0
-    push dword -1342177280
-    ;push 64.75
-    push dword 1
-    push dword 1073741824
-    call fix_mul_asm
-    add esp, 16
-    ;value in edx:eax
-    PRINT_DEC 4, eax
-    NEWLINE
-    PRINT_DEC 4, edx
-    NEWLINE
-    
-    ret
-    
-fail:
-    PRINT_STRING "Wrong result:"
-    NEWLINE
-    PRINT_HEX 4, edx
-    NEWLINE
-    PRINT_HEX 4, eax
-    NEWLINE
-    PRINT_STRING "Correct result:"
-    NEWLINE
-    PRINT_STRING "84"
-    PRINT_STRING "7800000"
-    ret
-%endif
-
-;ASSIGNMENT START: fix_mul_asm
 
 ;[ebp + 12][ebp + 08] * [ebp + 20][ebp + 16]
 ;-------------------------------------------
@@ -71,7 +14,6 @@ fail:
 ;[--------][--edx---]   [--eax---][--ebx---]
 
 fix_mul_asm:
-    ; You can also develop other functions/subprograms in here
     push ebp
     mov ebp, esp
     
@@ -200,5 +142,3 @@ fix_mul_asm:
             pop ebp
     
             ret
-
-;ASSIGNMENT END: fix_mul_asm
