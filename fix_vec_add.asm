@@ -1,6 +1,3 @@
-%ifndef era
-%include "io.inc"
-%endif
 section .bss
     v1: resd 6
     v2: resd 6
@@ -9,55 +6,7 @@ section .bss
 section .data
 global fix_vec_add_asm
 
-%ifndef era
-global main
-%endif
-
 section .text
-
-;You can add stuff to main as well
-%ifndef era
-main:
-    mov ebp, esp; for correct debugging
-    ;set v1: 1.0
-    mov dword [v1], 0x64000000;67108864 ; Nach
-    mov dword [v1+4], 0 ; Vor
-    mov dword [v1+8], 0x64000000;67108864
-    mov dword [v1+12], 0
-    mov dword [v1+16], 0x64000000;67108864
-    mov dword [v1+20], 0
-    ;set v2: -1.0
-    mov dword [v2], 0x14000000;4227858432 ; Nach
-    mov dword [v2+4], 0;4294967295 ; Vor
-    mov dword [v2+8], 0x14000000;4227858432
-    mov dword [v2+12], 0;4294967295
-    mov dword [v2+16], 0x14000000;4227858432
-    mov dword [v2+20], 0;4294967295
-    push dword o
-    push dword v2
-    push dword v1
-    call fix_vec_add_asm
-    add esp, 12
-    cmp dword [o], 0x78000000;0
-    jne fail
-    cmp dword [o+4], 0
-    jne fail
-    cmp dword [o+8], 0x78000000;0
-    jne fail
-    cmp dword [o+12], 0
-    jne fail
-    cmp dword [o+16],0x78000000;0
-    jne fail
-    cmp dword [o+20], 0
-    jne fail
-    PRINT_STRING "Success"
-    ret
-    fail:
-    PRINT_STRING "Test failed"
-    ret
-%endif
-
-;ASSIGNMENT START: fix_vec_add
 
 fix_vec_add_asm:
 
@@ -111,6 +60,3 @@ fix_vec_add_asm:
         pop ebp
 
     ret
-
-;ASSIGNMENT END: fix_vec_add
-
