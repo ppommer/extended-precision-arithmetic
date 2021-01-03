@@ -1,6 +1,3 @@
-%ifndef era
-%include "io.inc"
-%endif
 section .bss
     v1: resd 6
     v2: resd 6
@@ -10,55 +7,7 @@ global fix_vec_cross_asm
 extern fix_mul_asm
 extern fix_sub_asm
 
-%ifndef era
-global main
-%endif
-
 section .text
-
-;You can add stuff to main as well
-%ifndef era
-main:
-    mov ebp, esp; for correct debugging
-    ; write your own test code here
-    mov ebp, esp; for correct debugging
-    ;v1: {-671088640, -1342177280, -2214592512}
-    mov dword [v1], -671088640
-    mov dword [v1+4], -1
-    mov dword [v1+8], -1342177280
-    mov dword [v1+12], -1
-    mov dword [v1+16], -2214592512
-    mov dword [v1+20], -1
-    ;v2: {5368709120, 2952790016, 1476395008}
-    mov dword [v2], 1073741824
-    mov dword [v2+4], 1
-    mov dword [v2+8], 2952790016
-    mov dword [v2+12], 0
-    mov dword [v2+16], 1476395008
-    mov dword [v2+20], 0
-    
-    push dword o
-    push dword v2
-    push dword v1
-    call fix_vec_cross_asm
-    add esp, 12
-    ;o = v1 x v2
-    ;PRINT_DEC 4, [o]
-    ;NEWLINE
-    ;PRINT_DEC 4, [o + 4]
-    ;NEWLINE
-    ;PRINT_DEC 4, [o + 8]
-    ;NEWLINE
-    ;PRINT_DEC 4, [o + 12]
-    ;NEWLINE
-    ;PRINT_DEC 4, [o + 16]
-    ;NEWLINE
-    ;PRINT_DEC 4, [o + 20]
-    ;NEWLINE
-    ret
-%endif
-
-;ASSIGNMENT START: fix_vec_cross
 
 fix_vec_cross_asm:
     
@@ -234,5 +183,3 @@ fix_vec_cross_asm:
     pop ebp
 
     ret
-
-;ASSIGNMENT END: fix_vec_cross
