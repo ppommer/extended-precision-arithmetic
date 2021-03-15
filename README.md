@@ -14,13 +14,13 @@ Fixed-point subtraction.
 Fixed-point multiplication.
 
 `fix_vec_add.asm`
-Fixed-point vector addition. The first two parameters are the addresses of the vectors to be added. The result of the addition is in the third vector, whose address is passed via the stack.
+Fixed-point vector addition. The first two parameters are the addresses of the vectors to be added. The result of the addition is stored in the third vector (address passed over the stack).
 
 `fix_vec_sub.asm`
-Fixed-point vector subtraction. The first two parameters are the addresses of the vectors to be subtracted. The result of the subtraction is in the third vector, whose address is passed over the stack.
+Fixed-point vector subtraction. The first two parameters are the addresses of the vectors to be subtracted. The result of the subtraction is stored in the third vector (address passed over the stack).
 
 `fix_vec_dot.asm`
 Fixed-point scalar product. The addresses of both vectors are passed as parameters over the stack.
 
 `fix_vec_cross.asm`
-Fixed-point cross product. The addresses of both vectors are passed as parameters over the stack. The result of the cross product is in the third vector, whose address is also passed over the stack.
+Fixed-point cross product. The addresses of both vectors are passed as parameters over the stack. The result of the cross product is stored in the third vector (address passed over the stack).
