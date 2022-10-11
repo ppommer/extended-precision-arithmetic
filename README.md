@@ -1,7 +1,5 @@
 # Extended Precision Arithmetic
 
-Programming exercise in the course of the lecture _Introduction to Computer Organization and Technology - Computer Architecture_ (IN0004) at the Technical University of Munich.
-
 The implementation includes basic mathematical operations based on vectors with three elements. The operations are based on 64-bit fixed-point numbers (38-bit pre-decimal, 26-bit post-decimal) performed on a 32-bit architecture. Parameters are passed via the stack in several steps by concatenating the edx and eax registers (thus, the effective return is edx:eax).
 
 `fix_add.asm`
