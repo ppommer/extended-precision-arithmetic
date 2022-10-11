@@ -1,6 +1,6 @@
 # Extended Precision Arithmetic
 
-This repository includes a low-level implementation for basic vector operations on 64-bit fixed-point numbers. The implementation aims to be executable on a 32-bit architecture by splitting the 64-bit numbers into two registers each and executing the operations including the carry bit. Parameters are passed via the stack by concatenating the edx and eax registers; results are also returned in edx:eax.
+This repository contains a low-level implementation for basic vector operations on 64-bit fixed-point numbers for personal training purposes. The implementation aims to be executable on a 32-bit architecture by splitting the 64-bit numbers into two registers each and executing the operations including the carry bit. Parameters are passed via the stack by concatenating the edx and eax registers; results are also returned in edx:eax.
 
 `fix_add.asm`
 Fixed-point addition.
