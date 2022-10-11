@@ -1,6 +1,6 @@
 # Extended Precision Arithmetic
 
-The implementation includes basic mathematical operations based on vectors with three elements. The operations are based on 64-bit fixed-point numbers (38-bit pre-decimal, 26-bit post-decimal) performed on a 32-bit architecture. Parameters are passed via the stack in several steps by concatenating the edx and eax registers (thus, the effective return is edx:eax).
+This repository includes a low-level implementation for basic vector operations on 64-bit fixed-point numbers. The implementation aims to be executable on a 32-bit architecture by splitting the 64-bit numbers into two registers each and executing the operations including the carry bit. Parameters are passed via the stack by concatenating the edx and eax registers; results are also returned in edx:eax.
 
 `fix_add.asm`
 Fixed-point addition.
